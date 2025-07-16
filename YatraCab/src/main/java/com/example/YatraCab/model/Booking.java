@@ -1,7 +1,8 @@
-package com.example.YatraCab;
+package com.example.YatraCab.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.example.YatraCab.Enum.Status;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.Date;
 @Entity
 public class Booking {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int bookingId;
     String pickup;
     String destination;
@@ -31,7 +33,5 @@ public class Booking {
 
     @UpdateTimestamp
     Date lastUpdate;
-
-
 
 }

@@ -1,4 +1,4 @@
-package com.example.YatraCab;
+package com.example.YatraCab.Enum;
 
 public enum Status {
     TRUE,

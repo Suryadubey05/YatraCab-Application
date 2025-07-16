@@ -1,4 +1,4 @@
-package com.example.YatraCab;
+package com.example.YatraCab.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,20 +10,25 @@ import java.util.ArrayList;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
 @Getter
+@Setter
 
 @Entity
-public class Customer {
+public class Driver {
 
     @Id
-    private int customerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int driverId;
     private String name;
     private int age;
     private String emailId;
-    private Gender gender;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="Customer_id")
+    @JoinColumn(name = "driver_id")
     ArrayList<Booking> bookings = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cab_id")
+    Cab cab;
+
 }
