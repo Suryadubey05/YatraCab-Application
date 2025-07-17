@@ -1,18 +1,18 @@
 package com.example.YatraCab.dto.response;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-
+@Builder
 public class CustomerResponse {
     private String name;
     private int age;
     private String emailId;
+
+
+
 
     public String getName() {
         return name;
