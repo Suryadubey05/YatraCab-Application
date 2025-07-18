@@ -42,4 +42,11 @@ public class CustomerController {
     public List<CustomerResponse> getAllByGenderAndAge(@PathParam("gender") Gender gender, @PathParam("age") int age){
         return customerService.getAllByGenderAndAge(gender, age);
     }
+
+    //get all the customers which have same gender and age greater than.
+    @GetMapping("/get-by-age-greater-than")
+    public List<CustomerResponse> getAllByGenderAndAgeGreaterThan(@PathParam("gender") Gender gender,
+                                                                  @PathParam("age") int age){
+        return customerService.getAllByGenderAndAgeGreaterThan(gender, age);
+    }
 }
