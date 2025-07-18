@@ -1,6 +1,8 @@
 package com.example.YatraCab.service;
 
+import com.example.YatraCab.Enum.Gender;
 import com.example.YatraCab.Exception.CustomerNotFoundException;
+import com.example.YatraCab.Trasformer.CustomerTransformer;
 import com.example.YatraCab.dto.request.CustomerRequest;
 import com.example.YatraCab.dto.response.CustomerResponse;
 import com.example.YatraCab.model.Customer;
@@ -8,6 +10,8 @@ import com.example.YatraCab.repositiory.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,25 +24,15 @@ public class CustomerService {
     public CustomerResponse addCustomer(CustomerRequest customerRequest) {
 
         //RequestDTO ----> Entity
-
-        Customer customer = new Customer();
-        customer.setName(customerRequest.getName());
-        customer.setAge(customerRequest.getAge());
-        customer.setEmailId(customerRequest.getEmailId());
-        customer.setGender(customerRequest.getGender());
+       Customer customer = CustomerTransformer.customerRequestToCustomer(customerRequest);
 
         //save to DB
         Customer savedCustomer = customerRepository.save(customer);
 
 
         //saved entity to responseDTO
-        CustomerResponse customerResponse = new CustomerResponse();
-        customerResponse.setName(savedCustomer.getName());
-        customerResponse.setAge(savedCustomer.getAge());
-        customerResponse.setEmailId(savedCustomer.getEmailId());
+        return  CustomerTransformer.customerToCustomerResponse(savedCustomer);
 
-
-        return customerResponse;
     }
 
     public CustomerResponse getCustomer(int customerId) {
@@ -50,11 +44,39 @@ public class CustomerService {
        Customer savedCustomer = optionalCustomer.get();
 
         //saved entity to responseDTO
-        CustomerResponse customerResponse = new CustomerResponse();
-        customerResponse.setName(savedCustomer.getName());
-        customerResponse.setAge(savedCustomer.getAge());
-        customerResponse.setEmailId(savedCustomer.getEmailId());
+        return CustomerTransformer.customerToCustomerResponse(savedCustomer);
+    }
 
-        return customerResponse;
+    public List<CustomerResponse> getAllByGender(Gender gender) {
+        List<Customer> customerGender = customerRepository.findByGender(gender);
+        List<CustomerResponse> customerResponses = new ArrayList<>();
+
+        for(Customer customer : customerGender){
+            customerResponses.add(CustomerTransformer.customerToCustomerResponse(customer));
+        }
+
+        return customerResponses;
+    }
+
+    public List<CustomerResponse> getAllByGenderAndAge(Gender gender, int age) {
+        List<Customer> customers = customerRepository.findByGenderAndAge(gender, age);
+        List<CustomerResponse> customerResponses = new ArrayList<>();
+
+        for(Customer customer : customers){
+            customerResponses.add(CustomerTransformer.customerToCustomerResponse(customer));
+        }
+
+        return customerResponses;
+    }
+
+    public List<CustomerResponse> getAllByGenderAndAgeGreaterThan(Gender gender, int age) {
+        List<Customer> customers = customerRepository.getAllByGenderAndAgeGreaterThan(gender, age);
+        List<CustomerResponse> customerResponses = new ArrayList<>();
+
+        for(Customer customer : customers){
+            customerResponses.add(CustomerTransformer.customerToCustomerResponse(customer));
+        }
+
+        return customerResponses;
     }
 }

@@ -1,18 +1,18 @@
 package com.example.YatraCab.dto.request;
 
-import com.example.YatraCab.Enum.Gender;
+import com.example.YatraCab.Trasformer.DriverTransformer;
+import com.example.YatraCab.dto.response.DriverResponse;
+import com.example.YatraCab.model.Driver;
 import lombok.*;
-
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class CustomerRequest {
+public class DriverRequest {
     private String name;
     private int age;
     private String emailId;
-    private Gender gender;
 
 
     public String getName() {
@@ -37,13 +37,5 @@ public class CustomerRequest {
 
     public void setEmailId(String emailId) {
         this.emailId = emailId;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 }
