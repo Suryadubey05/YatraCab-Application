@@ -1,9 +1,5 @@
-package com.example.YatraCab.model;
+package com.example.YatraCab.dto.response;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,24 +9,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-
-@Entity
-public class Cab {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int cabId;
+public class CabResponse {
     private String cabNo;
     private String cabModel;
     private double ratePerKm;
     private boolean available;
-
-    public int getCabId() {
-        return cabId;
-    }
-
-    public void setCabId(int cabId) {
-        this.cabId = cabId;
-    }
+    private DriverResponse driverResponse;
 
     public String getCabNo() {
         return cabNo;
@@ -62,5 +46,13 @@ public class Cab {
 
     public void setAvailable(boolean available) {
         this.available = available;
+    }
+
+    public DriverResponse getDriverResponse() {
+        return driverResponse;
+    }
+
+    public void setDriverResponse(DriverResponse driverResponse) {
+        this.driverResponse = driverResponse;
     }
 }
