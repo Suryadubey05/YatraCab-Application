@@ -18,15 +18,30 @@ public class Driver {
     private int driverId;
     private String name;
     private int age;
+
+    @Column(unique = true, nullable = false)
     private String emailId;
 
 //    @OneToMany(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "driver_id")
 //    ArrayList<Booking> bookings = new ArrayList<>();
 //
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "cab_id")
-//    Cab cab;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cab_id")
+    Cab cab;
+
+    /*-------------------------------------------------------------------------*/
+
+
+
+
+    public Cab getCab() {
+        return cab;
+    }
+
+    public void setCab(Cab cab) {
+        this.cab = cab;
+    }
 
     public int getDriverId() {
         return driverId;
