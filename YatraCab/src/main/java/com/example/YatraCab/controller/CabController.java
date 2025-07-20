@@ -14,7 +14,7 @@ public class CabController {
     CabService cabService;
 
     @PostMapping("/register/driver/{driverId}")
-    public  CabResponse registerCab(@RequestBody CabRequest cabRequest,
+    public CabResponse registerCab(@RequestBody CabRequest cabRequest,
                                    @PathVariable("driverId") int driverId){
 
         return cabService.registerCab(cabRequest, driverId);

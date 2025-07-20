@@ -1,48 +1,23 @@
-package com.example.YatraCab.model;
+package com.example.YatraCab.dto.response;
 
 import com.example.YatraCab.Enum.TripStatus;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
-@NoArgsConstructor
-@AllArgsConstructor
-
-
-@Entity
-public class Booking {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int bookingId;
+public class BookingResponse {
     String pickup;
     String destination;
     double tripDistKm;
     TripStatus tripStatus;
     double billAmount;
-
-    @CreationTimestamp
     Date bookedAt;
-
-    @UpdateTimestamp
     Date lastUpdate;
 
+    CustomerResponse customer;
+
+    CabResponse cab;   //both driver and cab response
 
 
-
-
-
-
-    public int getBookingId() {
-        return bookingId;
-    }
-
-    public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
-    }
 
     public String getPickup() {
         return pickup;
@@ -100,4 +75,19 @@ public class Booking {
         this.lastUpdate = lastUpdate;
     }
 
+    public CustomerResponse getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerResponse customer) {
+        this.customer = customer;
+    }
+
+    public CabResponse getCab() {
+        return cab;
+    }
+
+    public void setCab(CabResponse cab) {
+        this.cab = cab;
+    }
 }

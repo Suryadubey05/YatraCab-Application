@@ -8,6 +8,7 @@ import com.example.YatraCab.model.Driver;
 public class CabTransformer {
     public static Cab cabRequestToCab(CabRequest cabRequest) {
         Cab cab = new Cab();
+
         cab.setCabNo(cabRequest.getCabNo());
         cab.setCabModel(cabRequest.getCabModel());
         cab.setRatePerKm(cabRequest.getRatePerKm());
@@ -17,6 +18,7 @@ public class CabTransformer {
 
     public static CabResponse cabToCabResponse(Cab cab, Driver driver) {
         CabResponse cabResponse = new CabResponse();
+
         cabResponse.setCabNo(cab.getCabNo());
         cabResponse.setCabModel(cab.getCabModel());
         cabResponse.setRatePerKm(cab.getRatePerKm());

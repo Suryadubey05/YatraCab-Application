@@ -22,13 +22,14 @@ public class Driver {
     @Column(unique = true, nullable = false)
     private String emailId;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "driver_id")
-//    ArrayList<Booking> bookings = new ArrayList<>();
-//
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "driver_id")
+    ArrayList<Booking> bookings = new ArrayList<>();
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cab_id")
     Cab cab;
+
 
     /*-------------------------------------------------------------------------*/
 
@@ -74,20 +75,12 @@ public class Driver {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
+    public ArrayList<Booking> getBookings() {
+        return bookings;
+    }
 
-//    public ArrayList<Booking> getBookings() {
-//        return bookings;
-//    }
-//
-//    public void setBookings(ArrayList<Booking> bookings) {
-//        this.bookings = bookings;
-//    }
-//
-//    public Cab getCab() {
-//        return cab;
-//    }
-//
-//    public void setCab(Cab cab) {
-//        this.cab = cab;
-//    }
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
 }
