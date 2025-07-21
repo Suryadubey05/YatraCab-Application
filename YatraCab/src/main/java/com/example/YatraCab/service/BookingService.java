@@ -10,6 +10,7 @@ import com.example.YatraCab.model.Booking;
 import com.example.YatraCab.model.Cab;
 import com.example.YatraCab.model.Customer;
 import com.example.YatraCab.model.Driver;
+import com.example.YatraCab.repositiory.BookingRepository;
 import com.example.YatraCab.repositiory.CabRepository;
 import com.example.YatraCab.repositiory.CustomerRepository;
 import com.example.YatraCab.repositiory.DriverRepository;
@@ -23,12 +24,15 @@ public class BookingService {
 
     @Autowired
     DriverRepository driverRepository;
+
     @Autowired
     CustomerRepository customerRepository;
 
     @Autowired
     CabRepository cabRepository;
 
+    @Autowired
+    BookingRepository bookingRepository;
 
 
     public BookingResponse bookCab(BookingRequest bookingRequest, int customerId) {
@@ -43,12 +47,21 @@ public class BookingService {
             throw  new CabUnavailableException("Sorry! No cabs available!");
         }
 
-        Booking booking = BookingTransformer.bookingRequestToBooking(bookingRequest, availableCab.getRatePerKm());
-        availableCab.setAvailable(false);
-        customer.getBookings().add(booking);
-        Driver driver = driverRepository.getDriverByCabId(availableCab.getCabId());
-        driver.getBookings().add(booking);
 
-        return null;
+        //convert bookingRequest -> booking
+        Booking booking = BookingTransformer.bookingRequestToBooking(bookingRequest, availableCab.getRatePerKm());
+        Booking savedBooking = bookingRepository.save(booking); //bcoz we want primary key to update data
+                                                                // of driver and customers bookings
+
+        availableCab.setAvailable(false);
+        customer.getBookings().add(savedBooking);  //overRide in database which have same primary key in bookings
+
+        Driver driver = driverRepository.getDriverByCabId(availableCab.getCabId());
+        driver.getBookings().add(savedBooking);    //overRide in database which have same primary key in bookings
+
+        Customer savedCustomer = customerRepository.save(customer);
+        Driver savedDriver = driverRepository.save(driver);
+
+        return BookingTransformer.bookingToBookingResponse(booking, savedCustomer, availableCab, savedDriver);
     }
 }

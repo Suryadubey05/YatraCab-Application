@@ -20,7 +20,11 @@ public class BookingTransformer {
         return booking;
     }
 
-    public static BookingResponse bookingToBookingResponse(Booking booking, Customer customer, Cab cab, Driver driver){
+    public static BookingResponse bookingToBookingResponse(Booking booking,
+                                                           Customer customer,
+                                                           Cab cab,
+                                                           Driver driver){
+        
         BookingResponse bookingResponse = new BookingResponse();
         bookingResponse.setPickup(booking.getPickup());
         bookingResponse.setDestination(booking.getDestination());

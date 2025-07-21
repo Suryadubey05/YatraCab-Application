@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,7 +25,7 @@ public class Driver {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "driver_id")
-    ArrayList<Booking> bookings = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cab_id")
@@ -75,12 +76,12 @@ public class Driver {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-    public ArrayList<Booking> getBookings() {
+
+    public List<Booking> getBookings() {
         return bookings;
     }
 
-    public void setBookings(ArrayList<Booking> bookings) {
+    public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
-
 }
