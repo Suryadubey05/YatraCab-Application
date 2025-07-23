@@ -76,7 +76,7 @@ public class BookingService {
     private void sendEmail(Customer customer){
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-        String text = "Congrats!! "+customer.getName()+". Your cab has been booked";
+        String text = "Congrats!! "+customer.getName()+". Your cab has been booked.";
 
         simpleMailMessage.setFrom("skd.dev05@gmail.com");
         simpleMailMessage.setTo(customer.getEmailId());

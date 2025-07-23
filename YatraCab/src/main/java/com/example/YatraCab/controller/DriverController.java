@@ -8,6 +8,8 @@ import com.example.YatraCab.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/driver")
 public class DriverController {
@@ -19,4 +21,15 @@ public class DriverController {
     public DriverResponse addDriver(@RequestBody DriverRequest driverRequest){
         return driverService.addDriver(driverRequest);
     }
+
+    @GetMapping("/get/{id}")
+    public DriverResponse getDriver(@PathVariable("id") int driverId){
+        return driverService.getDriver(driverId);
+    }
+
+    @GetMapping("/get/availableDriver")
+    public List<DriverResponse> getAllAvailableDriver(){
+        return driverService.getAllAvailableDriver();
+    }
+
 }
