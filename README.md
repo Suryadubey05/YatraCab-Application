@@ -36,6 +36,28 @@ This repository contains the **backend system** developed using **Spring Boot (J
 ---
 
 ## 📂 Project Structure (Backend)
+
+YatraCab_App/
+├── src/
+│ ├── main/
+│ │ ├── java/com/yatracab/
+│ │ │ ├── controller/
+│ │ │ ├── entity/
+│ │ │ │ ├── Customer.java
+│ │ │ │ ├── Driver.java
+│ │ │ │ ├── Cab.java
+│ │ │ │ └── Booking.java
+│ │ │ ├── repository/
+│ │ │ ├── service/
+│ │ │ └── YatraCabAppApplication.java
+│ │ └── resources/
+│ │ ├── application.properties
+│ │ └── static/
+│ └── test/
+├── pom.xml
+└── README.md
+
+
 src/
 ├── config/ # Security configurations
 ├── controller/ # REST API endpoints
