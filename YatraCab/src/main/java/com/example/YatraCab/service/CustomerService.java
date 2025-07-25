@@ -79,4 +79,26 @@ public class CustomerService {
 
         return customerResponses;
     }
+
+    public CustomerResponse updateCustomerById(CustomerRequest customerRequest, int id) {
+        //fetch customer details
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+        if (optionalCustomer.isEmpty()){
+            throw new CustomerNotFoundException("Invalid CustomerId!");
+        }
+        Customer oldCustomer = optionalCustomer.get();
+
+        Customer newCustomer = CustomerTransformer.customerRequestToCustomer(customerRequest);
+
+        //update the details
+        oldCustomer.setName(newCustomer.getName());
+        oldCustomer.setAge(newCustomer.getAge());
+        oldCustomer.setGender(newCustomer.getGender());
+        oldCustomer.setEmailId(newCustomer.getEmailId());
+
+        //save new details into DB
+        Customer savedNewCustomer = customerRepository.save(oldCustomer);
+
+        return CustomerTransformer.customerToCustomerResponse(savedNewCustomer);
+    }
 }

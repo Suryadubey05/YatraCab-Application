@@ -49,4 +49,11 @@ public class CustomerController {
                                                                   @PathParam("age") int age){
         return customerService.getAllByGenderAndAgeGreaterThan(gender, age);
     }
+
+    //update customer details
+    @PutMapping("/update/{id}")
+    public CustomerResponse updateCustomerById(@RequestBody CustomerRequest customerRequest,
+                                               @PathVariable int id){
+        return customerService.updateCustomerById(customerRequest, id);
+    }
 }
