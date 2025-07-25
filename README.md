@@ -56,16 +56,16 @@ This repository contains the **backend system** developed using **Spring Boot (J
 
 ### 🔍 Swagger UI – All API Endpoints
 
-###Customer API's
+### Customer API's
 <img width="743" height="203" alt="Customer API's" src="https://github.com/user-attachments/assets/ff6d311f-5c6a-4eda-b2e9-d3a12d698630" />
 
-###Driver API's
+### Driver API's
 <img width="719" height="112" alt="Driver API's" src="https://github.com/user-attachments/assets/773108d3-cbd9-4fb6-b5f0-e863439d24ef" />
 
-###Cab API's
+### Cab API's
 <img width="725" height="53" alt="Cab API's" src="https://github.com/user-attachments/assets/76832f2f-0a5a-409f-915f-30356db5e58a" />
 
-###Booking API's
+### Booking API's
 <img width="714" height="52" alt="Booking API's" src="https://github.com/user-attachments/assets/4504c849-7f38-4ad7-b9a2-45c331e2eefe" />
 
 ### Schemas of all API's
@@ -76,16 +76,16 @@ This repository contains the **backend system** developed using **Spring Boot (J
 
 ### 🗃️ Database Entity Relationship Diagram
 
-###Customer Database
+### Customer Database
 <img width="265" height="88" alt="CustomerDB" src="https://github.com/user-attachments/assets/ef2bac85-65ef-4c25-87f8-a9a6e14267b3" />
 
-###Driver Database
+### Driver Database
 <img width="259" height="79" alt="DriverDB" src="https://github.com/user-attachments/assets/9720792f-38c2-4b13-b0bd-351e6afceaed" />
 
-###Cab Database
+### Cab Database
 <img width="252" height="122" alt="CabDB" src="https://github.com/user-attachments/assets/1970976d-bb81-4dd3-adc4-926ea2a11f32" />
 
-###Bookings Database
+### Bookings Database
 <img width="650" height="113" alt="BookingDB" src="https://github.com/user-attachments/assets/8e1c1434-fbda-42f3-bbf6-fd91f3c98858" />
 
 
