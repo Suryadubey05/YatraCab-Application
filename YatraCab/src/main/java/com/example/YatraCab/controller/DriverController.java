@@ -32,4 +32,11 @@ public class DriverController {
         return driverService.getAllAvailableDriver();
     }
 
+    @DeleteMapping("/delete/{id}")
+    public DriverResponse deleteDriverById(@PathVariable("id") int id){
+        DriverResponse deletedDriver = driverService.getDriver(id);
+        driverService.deleteDriverById(id);
+        return deletedDriver;
+    }
+
 }

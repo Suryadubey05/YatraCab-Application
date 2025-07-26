@@ -20,4 +20,6 @@ public interface DriverRepository extends JpaRepository<Driver, Integer>{
     @Query(value = "select d.* from driver d INNER JOIN cab c ON d.cab_id = c.cab_id where c.available = 1", nativeQuery = true)
     List<Driver> findByAvailableDriver();
 
+    @Query(value = "select cab_id from Driver where driver_id = :id", nativeQuery = true)
+    int getCabIdByDriverId(@Param("id") int driverId);
 }

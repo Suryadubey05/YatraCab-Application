@@ -1,5 +1,7 @@
 package com.example.YatraCab.service;
 
+import com.example.YatraCab.Enum.TripStatus;
+import com.example.YatraCab.Exception.CabNotFound;
 import com.example.YatraCab.Exception.CabUnavailableException;
 import com.example.YatraCab.Exception.CustomerNotFoundException;
 import com.example.YatraCab.Exception.DriverNotFoundException;
@@ -85,5 +87,14 @@ public class BookingService {
 
 
         javaMailSender.send(simpleMailMessage);
+    }
+
+    public double completedBooking(int id, String destination) {
+        String reachedDestination = bookingRepository.getDestinationByCustomerId(id);
+        double amount = (double)bookingRepository.getAmountByCustomerId(id);
+        if(destination.equals(reachedDestination)){
+            return amount;
+        }
+        return -1;
     }
 }

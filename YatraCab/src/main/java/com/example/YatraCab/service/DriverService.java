@@ -46,4 +46,8 @@ public class DriverService {
         }
         return driverResponses;
     }
+
+    public void deleteDriverById(int id) {
+        driverRepository.deleteById(id);
+    }
 }
