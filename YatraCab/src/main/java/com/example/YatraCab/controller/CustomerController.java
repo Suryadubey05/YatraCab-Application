@@ -56,4 +56,12 @@ public class CustomerController {
                                                @PathVariable int id){
         return customerService.updateCustomerById(customerRequest, id);
     }
+
+    //delete customer
+    @DeleteMapping("/delete/{id}/{destination}")
+    public CustomerResponse deleteCustomerById(@PathVariable("id") int id){
+        CustomerResponse deletedCustomer = customerService.getCustomer(id);
+        customerService.deleteCustomerById(id);
+        return deletedCustomer;
+    }
 }

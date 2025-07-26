@@ -101,4 +101,8 @@ public class CustomerService {
 
         return CustomerTransformer.customerToCustomerResponse(savedNewCustomer);
     }
+
+    public void deleteCustomerById(int id) {
+        customerRepository.deleteById(id);
+    }
 }
