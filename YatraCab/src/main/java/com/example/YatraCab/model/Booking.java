@@ -1,6 +1,7 @@
 package com.example.YatraCab.model;
 
 import com.example.YatraCab.Enum.TripStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -21,13 +22,17 @@ public class Booking {
     String pickup;
     String destination;
     double tripDistKm;
+
+    @Enumerated(value = EnumType.STRING)
     TripStatus tripStatus;
     double billAmount;
 
     @CreationTimestamp
+    @JsonFormat(pattern = "yyyy-MM-dd")
     Date bookedAt;
 
     @UpdateTimestamp
+    @JsonFormat(pattern = "yyyy-MM-dd")
     Date lastUpdate;
 
 

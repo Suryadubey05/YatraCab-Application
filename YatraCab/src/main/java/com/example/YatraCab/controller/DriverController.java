@@ -1,13 +1,10 @@
 package com.example.YatraCab.controller;
-
-
 import com.example.YatraCab.dto.request.DriverRequest;
 import com.example.YatraCab.dto.response.DriverResponse;
-import com.example.YatraCab.repositiory.DriverRepository;
+import com.example.YatraCab.service.BookingService;
 import com.example.YatraCab.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -16,6 +13,9 @@ public class DriverController {
 
     @Autowired
     DriverService driverService;
+
+    @Autowired
+    BookingService bookingService;
 
     @PostMapping("/add")
     public DriverResponse addDriver(@RequestBody DriverRequest driverRequest){
@@ -38,5 +38,6 @@ public class DriverController {
         driverService.deleteDriverById(id);
         return deletedDriver;
     }
+
 
 }

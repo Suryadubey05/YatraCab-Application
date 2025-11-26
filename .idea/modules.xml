@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/YatraCab.iml" filepath="$PROJECT_DIR$/.idea/YatraCab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/YatraCab/YatraCab.iml" filepath="$PROJECT_DIR$/YatraCab/YatraCab.iml" />
     </modules>
   </component>
 </project>

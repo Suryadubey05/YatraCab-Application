@@ -25,11 +25,11 @@ public class Driver {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "driver_id")
-    private List<Booking> bookings = new ArrayList<>();
+    private List<Booking> bookings = new ArrayList<>();  //one driver have many bookings
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cab_id")
-    Cab cab;
+    Cab cab;  //one driver has one cab
 
 
     /*-------------------------------------------------------------------------*/

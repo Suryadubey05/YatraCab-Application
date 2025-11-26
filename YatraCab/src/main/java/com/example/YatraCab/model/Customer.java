@@ -30,8 +30,8 @@ public class Customer {
 
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="Customer_id")
-    List<Booking> bookings = new ArrayList<>();
+    @JoinColumn(name="Customer_id")  // foreign key in Booking table
+    List<Booking> bookings = new ArrayList<>();   //one customer have many bookings
 
     public int getCustomerId() {
         return customerId;

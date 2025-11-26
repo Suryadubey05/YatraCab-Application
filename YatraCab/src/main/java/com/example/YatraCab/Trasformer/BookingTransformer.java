@@ -11,6 +11,7 @@ import com.example.YatraCab.model.Driver;
 public class BookingTransformer {
     public static Booking bookingRequestToBooking(BookingRequest bookingRequest, double perKmRate){
         Booking booking = new Booking();
+
         booking.setPickup(bookingRequest.getPickup());
         booking.setDestination(bookingRequest.getDestination());
         booking.setTripDistKm(bookingRequest.getTripDistKm());

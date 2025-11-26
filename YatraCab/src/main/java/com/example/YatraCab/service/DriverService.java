@@ -1,16 +1,13 @@
 package com.example.YatraCab.service;
 
 import com.example.YatraCab.Exception.DriverNotFoundException;
-import com.example.YatraCab.Trasformer.CustomerTransformer;
 import com.example.YatraCab.Trasformer.DriverTransformer;
 import com.example.YatraCab.dto.request.DriverRequest;
-import com.example.YatraCab.dto.response.CustomerResponse;
 import com.example.YatraCab.dto.response.DriverResponse;
 import com.example.YatraCab.model.Driver;
 import com.example.YatraCab.repositiory.DriverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

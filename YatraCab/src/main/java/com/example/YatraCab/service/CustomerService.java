@@ -29,10 +29,8 @@ public class CustomerService {
         //save to DB
         Customer savedCustomer = customerRepository.save(customer);
 
-
         //saved entity to responseDTO
         return  CustomerTransformer.customerToCustomerResponse(savedCustomer);
-
     }
 
     public CustomerResponse getCustomer(int customerId) {

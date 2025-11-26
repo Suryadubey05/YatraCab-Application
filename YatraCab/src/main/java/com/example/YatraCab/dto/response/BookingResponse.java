@@ -1,6 +1,7 @@
 package com.example.YatraCab.dto.response;
 
 import com.example.YatraCab.Enum.TripStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -10,7 +11,9 @@ public class BookingResponse {
     double tripDistKm;
     TripStatus tripStatus;
     double billAmount;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     Date bookedAt;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     Date lastUpdate;
 
     CustomerResponse customer;
