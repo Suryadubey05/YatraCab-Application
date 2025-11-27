@@ -1,6 +1,7 @@
 package com.example.YatraCab.repositiory;
 
 import com.example.YatraCab.model.Booking;
+import com.example.YatraCab.model.Cab;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,4 +24,10 @@ public interface BookingRepository extends JpaRepository<Booking, Integer> {
     List<Booking> findByDriverIdAndBookedAtBetween(@Param("id") int driverId,
                                                    @Param("start") Date start,
                                                    @Param("end") Date end);
+
+    @Query(value = "SELECT driver_id FROM booking WHERE booking_id = :id", nativeQuery = true)
+    int findDriverByBookingId(@Param("id") int bookingId);
+
+    @Query(value = "SELECT customer_id FROM booking WHERE booking_id = :id", nativeQuery = true)
+    int findByCustomerId(@Param("id") int bookingId);
 }

@@ -26,16 +26,6 @@ public class BookingController {
         return bookingService.bookCab(bookingRequest, customerId);
     }
 
-    //cancel booking
-
-    //completed booking
-    @PutMapping("/completed/booking/{id}/{destination}")
-    public ResponseEntity<String> completedBooking(@PathVariable("id") int id,
-                                                   @PathVariable("destination") String destination){
-        double amount = bookingService.completedBooking(id, destination);
-
-        return new ResponseEntity<>("Completed your ride." + " This is Your final amount " + amount, HttpStatus.OK);
-    }
 
     @PostMapping("/bookings/by-date")
     public DateRangeResponse getBookingsByDate(@RequestBody DateRangeRequest req) {
@@ -44,6 +34,12 @@ public class BookingController {
                 req.getStart(),
                 req.getEnd()
         );
+    }
+
+    @PatchMapping("/{id}/complete")
+    public ResponseEntity<BookingResponse> completeTrip(@PathVariable int id) {
+        BookingResponse res = bookingService.completeTrip(id);
+        return ResponseEntity.ok(res);
     }
 
 }

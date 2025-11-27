@@ -1,4 +1,5 @@
 package com.example.YatraCab.service;
+import com.example.YatraCab.Enum.TripStatus;
 import com.example.YatraCab.Exception.CabUnavailableException;
 import com.example.YatraCab.Exception.CustomerNotFoundException;
 import com.example.YatraCab.Trasformer.BookingTransformer;
@@ -87,15 +88,6 @@ public class BookingService {
         javaMailSender.send(simpleMailMessage);
     }
 
-    public double completedBooking(int id, String destination) {
-        String reachedDestination = bookingRepository.getDestinationByCustomerId(id);
-        double amount = (double)bookingRepository.getAmountByCustomerId(id);
-        if(destination.equals(reachedDestination)){
-            return amount;
-        }
-        return -1;
-    }
-
     public DateRangeResponse getBookingsByDate(int driverId, Date start, Date end) {
 
         end = new Date(end.getTime() + (24 * 60 * 60 * 1000) - 1);
@@ -123,5 +115,32 @@ public class BookingService {
 
         return dateRangeResponse;
 
+    }
+
+    public BookingResponse completeTrip(int id) {
+        Booking booking = bookingRepository.findById(id).orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        int driverId = bookingRepository.findDriverByBookingId(booking.getBookingId());
+        Driver driver = driverRepository.findById(driverId).orElseThrow(() -> new RuntimeException("Cab not found!"));
+
+        int cabId = driverRepository.getCabIdByDriverId(driverId);
+        Cab cab = cabRepository.findById(cabId).orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        int customerId = bookingRepository.findByCustomerId(booking.getBookingId());
+        Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new RuntimeException("Customer not found!"));
+
+
+        if(booking.getTripStatus() == TripStatus.COMPLETED){
+            throw new RuntimeException("Trip is already completed");
+        }
+
+        booking.setTripStatus(TripStatus.COMPLETED);
+        bookingRepository.save(booking);
+
+        cab.setAvailable(true);
+        cabRepository.save(cab);
+
+
+        return BookingTransformer.bookingToBookingResponse(booking, customer, cab, driver);
     }
 }

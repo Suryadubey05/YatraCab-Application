@@ -1,5 +1,5 @@
 package com.example.YatraCab.Enum;
 
 public enum TripStatus {
-    BOOKED, CANCELLED, COMPLETED, IN_PROGRESS
+    PENDING, ACCEPTED, REJECTED, CANCELLED, COMPLETED, IN_PROGRESS
 }
