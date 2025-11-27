@@ -1,6 +1,7 @@
 package com.example.YatraCab.controller;
 
 import com.example.YatraCab.dto.request.BookingRequest;
+import com.example.YatraCab.dto.request.CancelTripRequest;
 import com.example.YatraCab.dto.request.DateRangeRequest;
 import com.example.YatraCab.dto.response.BookingResponse;
 import com.example.YatraCab.dto.response.DateRangeResponse;
@@ -40,6 +41,13 @@ public class BookingController {
     public ResponseEntity<BookingResponse> completeTrip(@PathVariable int id) {
         BookingResponse res = bookingService.completeTrip(id);
         return ResponseEntity.ok(res);
+    }
+
+    @PostMapping("/cancelBooking/{id}")
+    public ResponseEntity<BookingResponse> cancelTrip(@PathVariable("id") int id,
+                                                      @RequestBody CancelTripRequest cancelTripRequest){
+        BookingResponse bookingResponse = bookingService.cancelTrip(id, cancelTripRequest);
+        return ResponseEntity.ok(bookingResponse);
     }
 
 }

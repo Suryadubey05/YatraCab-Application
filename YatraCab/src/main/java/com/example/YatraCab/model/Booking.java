@@ -8,12 +8,11 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
-
-
 @Entity
 public class Booking {
     @Id
@@ -22,6 +21,10 @@ public class Booking {
     String pickup;
     String destination;
     double tripDistKm;
+    String cancelReason;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    LocalDateTime cancelledAt;
 
     @Enumerated(value = EnumType.STRING)
     TripStatus tripStatus;
@@ -34,12 +37,6 @@ public class Booking {
     @UpdateTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd")
     Date lastUpdate;
-
-
-
-
-
-
 
     public int getBookingId() {
         return bookingId;
@@ -73,6 +70,22 @@ public class Booking {
         this.tripDistKm = tripDistKm;
     }
 
+    public String getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
+    }
+
+    public LocalDateTime getCancelledAt() {
+        return cancelledAt;
+    }
+
+    public void setCancelledAt(LocalDateTime cancelledAt) {
+        this.cancelledAt = cancelledAt;
+    }
+
     public TripStatus getTripStatus() {
         return tripStatus;
     }
@@ -104,5 +117,4 @@ public class Booking {
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
-
 }

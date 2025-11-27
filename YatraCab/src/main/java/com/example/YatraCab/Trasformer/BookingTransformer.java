@@ -34,6 +34,8 @@ public class BookingTransformer {
         bookingResponse.setBillAmount(booking.getBillAmount());
         bookingResponse.setBookedAt(booking.getBookedAt());
         bookingResponse.setLastUpdate(booking.getLastUpdate());
+        bookingResponse.setCancelReason(booking.getCancelReason());
+        bookingResponse.setCancelledAt(booking.getCancelledAt());
 
         bookingResponse.setCustomer(CustomerTransformer.customerToCustomerResponse(customer));
         bookingResponse.setCab(CabTransformer.cabToCabResponse(cab,driver));

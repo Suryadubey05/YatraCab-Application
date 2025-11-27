@@ -3,6 +3,7 @@ package com.example.YatraCab.dto.response;
 import com.example.YatraCab.Enum.TripStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class BookingResponse {
@@ -15,11 +16,14 @@ public class BookingResponse {
     Date bookedAt;
     @JsonFormat(pattern = "yyyy-MM-dd")
     Date lastUpdate;
+    String cancelReason;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    LocalDateTime cancelledAt;
+
 
     CustomerResponse customer;
 
     CabResponse cab;   //both driver and cab response
-
 
 
     public String getPickup() {
@@ -76,6 +80,22 @@ public class BookingResponse {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public String getCancelReason() {
+        return cancelReason;
+    }
+
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
+    }
+
+    public LocalDateTime getCancelledAt() {
+        return cancelledAt;
+    }
+
+    public void setCancelledAt(LocalDateTime cancelledAt) {
+        this.cancelledAt = cancelledAt;
     }
 
     public CustomerResponse getCustomer() {
